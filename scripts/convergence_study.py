@@ -1,7 +1,6 @@
 '''
     __author__ = H. von Wahl
     __date__   = 13.08.2021
-    __update__ = 26.10.2021
 
     We consider the heat equation on a moving domain. The motion of the
     domain is driven by the transfer forces acting on a rigid body.

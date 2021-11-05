@@ -33,11 +33,14 @@ The scripts to reproduce the computational results are located in the `scripts` 
 
 A convergence study is driven by running `convergence_study.py`. The method (BDF1/2, P1 levelset/isoparametric) is determined in line 15 `from solver_xxx import *`. The implementation of each method is then contained in the individual `solver_xxx.py`
 
-The parameters for which the study is computed, can be tuned in the `PARAMETERS` block in `convergence_study.py`, i.e., mesh sizes, time-step, number of refinements, ect.
+The parameters for which the study is computed, can be tuned in the `PARAMETERS` block in `convergence_study.py`, i.e., mesh sizes, time-step, number of refinements, ect. Note that if the Nitsche study is to be run, the Lagrange stability parameter must be replaced with the Nitsche penalty parameter.
 
 By default, the direct solver `pardiso` is used to solve the linear systems resulting from the discretisation. If this is not available, this may be replaced with `umfpack` in `scripts/convergence_study.py`
 
-The results are then the position, velocity and forces acting on the interface over time. The are contained pickled file as a dictionary with the results for each mesh/time-step combination.
+The results are then the position and velocity of the interface over time. The pickled in a file as a dictionary with the results for each mesh/time-step combination.
+
+# Reference simulation
+The referece data to compare the results with can be computed using the `scripts/ALE_referenceBDF2.py` file. Here the options are the mesh size, the finite element order and the (inverse) time-step. The file is run by calling `python3 ALE_referenceBDF2.py --h meshsize --k order --dtinv inverse_timestep`.
 
 # Post-process results
-The necessary scripts to compute convergence rates from the convergence studies are located the `results` directory. These python scripts can be used to create convergence tables in txt or LaTeX form, and create text files for convergence plots.
+The necessary scripts to compute convergence rates from the convergence studies are located the `results` directory. These python scripts can be used to create convergence tables in either txt or LaTeX form. Furthermore, text files for convergence plots can be created.
