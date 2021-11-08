@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5654449.svg)](https://doi.org/10.5281/zenodo.5654449)
+
 The reproduction scripts and results data for the paper "Error Estimate for the Heat Equation on a Coupled Moving Domain in a Fully Eulerian Framework by H. v. Wahl and T. Richter.
 
 # Files
