@@ -215,7 +215,7 @@ def solve_coupled_heat_equation(
         vel_s_new = (1 - omega) * vel_s + omega * vel_s_tmp
 
         update = vel_s_new - vel_s
-        if abs(update / vel_s_new) < ode_tol:
+        if inner_it > 0 and abs(update / vel_s_new) < ode_tol:
             print(f' ODE converged after {inner_it} iterations')
             break
 
@@ -310,7 +310,7 @@ def solve_coupled_heat_equation(
             vel_s_new = (1 - omega) * vel_s + omega * vel_s_tmp
 
             update = vel_s_new - vel_s
-            if abs(update / vel_s_new) < ode_tol:
+            if inner_it > 0 and abs(update / vel_s_new) < ode_tol:
                 print(f' ODE converged after {inner_it} iterations')
                 break
 

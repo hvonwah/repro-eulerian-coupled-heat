@@ -22,7 +22,7 @@ SetNumThreads(20)
 start_time = wall_time.time()
 
 # -------------------------------- PARAMETERS ---------------------------------
-h0 = 0.1                                # Initial mesh size
+h0 = 0.095                              # Initial mesh size
 dt_inv0 = 50                            # Initial time-step
 order = 2                               # Finite element order
 example = 'data'                        # The library describing the example

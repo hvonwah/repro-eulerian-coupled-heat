@@ -51,7 +51,7 @@ file_out = f'CoupledHeatEquation_h{hmax}k{order}dtinv{dt_inv}bdf2_defset.txt'
 
 
 # ----------------------------------- DATA ------------------------------------
-t_end = 1.0                                     # End time
+t_end = 2.0                                     # End time
 h0 = 0.8                                        # Initial centre of solid
 
 vel_s_0 = 0                                     # Initial solid velocity
@@ -213,7 +213,7 @@ with TaskManager():
         vel_s_new = (1 - omega) * vel_s + omega * vel_s_tmp
 
         update = vel_s_new - vel_s
-        if abs(update / vel_s_new) < ode_tol:
+        if inner_it > 0 and abs(update / vel_s_new) < ode_tol:
             print(f' ODE converged after {inner_it} iterations')
             break
 
@@ -281,7 +281,7 @@ with TaskManager():
             vel_s_new = (1 - omega) * vel_s + omega * vel_s_tmp
 
             update = vel_s_new - vel_s
-            if abs(update / vel_s_new) < ode_tol:
+            if inner_it > 0 and abs(update / vel_s_new) < ode_tol:
                 print(f' ODE converged after {inner_it} iterations')
                 break
 
