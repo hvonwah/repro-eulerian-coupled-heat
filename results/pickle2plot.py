@@ -10,10 +10,10 @@ h0 = 0.1
 dt_inv0 = 50
 
 filename_raw = 'data/coupled_heat_problem-raw_data-example_data'
-filename_raw += 'rx(0,5)rt(0,5)_k2h0.1dtinv50BDF2HONitsche.data'
+filename_raw += 'rx(0,5)rt(0,5)_k2h0.095dtinv50BDF2HONitsche.data'
 
-filename_ref = 'data/CoupledHeatEquation_h0.005k4dtinv6400bdf2_defset.txt'
-dt_inv_ref = 6400
+filename_ref = 'data/CoupledHeatEquation_h0.005k4dtinv12800bdf2_defset.txt'
+dt_inv_ref = 12800
 
 filename_out = 'convergence_data_example1_bdf2honitsche'
 
@@ -44,18 +44,6 @@ for lx, lt in product(range(Lx[0], Lx[1] + 1), range(Lt[0], Lt[1] + 1)):
         err = sqrt(sum(square(err_array)) / dtinv)
         errors[key][(lx, lt)] = err
 
-
-for lx, key in product(range(*Lx), errors):
-    e1, e2 = errors[key][(lx, Lt[1])], errors[key][(lx + 1, Lt[1])]
-    errors[key][(lx + 1, 'eoc_x')] = log2(e1) - log2(e2)
-
-for lx, key in product(range(*Lt), errors):
-    e1, e2 = errors[key][(lx, lx)], errors[key][(lx + 1, lx + 1)]
-    errors[key][(lx + 1, 'eoc_xt')] = log2(e1) - log2(e2)
-
-for lt, key in product(range(*Lt), errors):
-    e1, e2 = errors[key][(Lx[1], lt)], errors[key][(Lx[1], lt + 1)]
-    errors[key][('eoc_t', lt + 1)] = log2(e1) - log2(e2)
 
 ##############################################################################
 # Write data to file

@@ -9,12 +9,12 @@ Lt = (0, 5)
 dt_inv0 = 50
 
 filename_raw = 'data/coupled_heat_problem-raw_data-example_data'
-filename_raw += 'rx(0,5)rt(0,5)_k2h0.1dtinv50BDF2HO_Nitsche.data'
+filename_raw += 'rx(0,5)rt(0,5)_k2h0.095dtinv50BDF2HONitsche.data'
 
-filename_ref = 'data/CoupledHeatEquation_h0.005k4dtinv6400bdf2_defset.txt'
-dt_inv_ref = 6400
+filename_ref = 'data/CoupledHeatEquation_h0.005k4dtinv12800bdf2_defset.txt'
+dt_inv_ref = 12800
 
-filename_out = 'convergence_table_example1_bdf2ho_nitsche'
+filename_out = 'convergence_table_example1_bdf2honitsche'
 
 
 ##############################################################################
@@ -48,7 +48,8 @@ for lx, key in product(range(*Lx), errors):
     e1, e2 = errors[key][(lx, Lt[1])], errors[key][(lx + 1, Lt[1])]
     errors[key][(lx + 1, 'eoc_x')] = log2(e1) - log2(e2)
 
-for lx, key in product(range(*Lt), errors):
+for lvl, key in product(zip(reversed(range(*Lx)), reversed(range(*Lt))), errors):
+    lx, lt = lvl
     e1, e2 = errors[key][(lx, lx)], errors[key][(lx + 1, lx + 1)]
     errors[key][(lx + 1, 'eoc_xt')] = log2(e1) - log2(e2)
 

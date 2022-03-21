@@ -9,13 +9,13 @@ Lt = (0, 5)
 dt_inv0 = 50
 
 filename_raw = 'data/coupled_heat_problem-raw_data-example_data'
-filename_raw += 'rx(0,5)rt(0,5)_k2h0.1dtinv50BDF2HO.data'
+filename_raw += f'rx(0,5)rt(0,5)_k2h0.095dtinv{dt_inv0}BDF2HONitsche.data'
 
-filename_ref = 'data/CoupledHeatEquation_h0.005k4dtinv6400bdf2_defset.txt'
-dt_inv_ref = 6400
+filename_ref = 'data/CoupledHeatEquation_h0.005k4dtinv12800bdf2_defset.txt'
+dt_inv_ref = 12800
 
 
-filename_out = 'convergence_table_bdf2ho.txt'
+filename_out = 'convergence_table_bdf2honitsche.txt'
 
 # Load files
 df_ref = read_csv(filename_ref, sep=' ', index_col=False)
@@ -36,6 +36,7 @@ for lx, lt in product(range(Lx[0], Lx[1] + 1), range(Lt[0], Lt[1] + 1)):
 
     for key in errors:
         err_array = sample_ref[key].to_numpy() - array(data_lvl[key])
+
         err = sqrt(sum(square(err_array)) / dtinv)
         errors[key][(lx, lt)] = err
 
@@ -45,9 +46,10 @@ for lx, key in product(range(*Lx), errors):
     e1, e2 = errors[key][(lx, Lt[1])], errors[key][(lx + 1, Lt[1])]
     errors[key][(lx + 1, 'eoc_x')] = log2(e1) - log2(e2)
 
-for lx, key in product(range(*Lt), errors):
-    e1, e2 = errors[key][(lx, lx)], errors[key][(lx + 1, lx + 1)]
-    errors[key][(lx + 1, 'eoc_xt')] = log2(e1) - log2(e2)
+for lvl, key in product(zip(reversed(range(*Lx)), reversed(range(*Lt))), errors):
+    lx, lt = lvl
+    e1, e2 = errors[key][(lx, lt)], errors[key][(lx + 1, lt + 1)]
+    errors[key][(lvl[0] + 1, 'eoc_xt')] = log2(e1) - log2(e2)
 
 for lt, key in product(range(*Lt), errors):
     e1, e2 = errors[key][(Lx[1], lt)], errors[key][(Lx[1], lt + 1)]

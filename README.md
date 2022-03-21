@@ -20,10 +20,11 @@ The reproduction scripts and results data for the paper "Error Estimate for the 
 |   +-- pickle2plot.py                    # Create txt files of the results for plots 
 |   +-- postprocess_convergence_study.py  # Create txt file with full convergence study tables
 |   +-- data
-|   |   +-- CoupledHeatEquation_h0.005k4dtinv6400bdf2_defset.txt
+|   |   +-- CoupledHeatEquation_h0.005k4dtinv12800bdf2_defset.txt
 |   |   +-- coupled_heat_problem-raw_data-example_datarx(0,5)rt(0,5)_k2h0.1dtinv50BDF1.data
-|   |   +-- coupled_heat_problem-raw_data-example_datarx(0,5)rt(0,5)_k2h0.1dtinv50BDF2HO.data
-|   |   +-- coupled_heat_problem-raw_data-example_datarx(0,5)rt(0,5)_k2h0.1dtinv50BDF2HO_Nitsche.data
+|   |   +-- coupled_heat_problem-raw_data-example_datarx(0,5)rt(0,5)_k2h0.1dtinv50BDF2.data
+|   |   +-- coupled_heat_problem-raw_data-example_datarx(0,5)rt(0,5)_k2h0.095dtinv50BDF2HO.data
+|   |   +-- coupled_heat_problem-raw_data-example_datarx(0,5)rt(0,5)_k2h0.095dtinv50BDF2HO_Nitsche.data
 ```
 
 # Install
