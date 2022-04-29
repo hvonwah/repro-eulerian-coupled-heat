@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5654449.svg)](https://doi.org/10.5281/zenodo.5654449)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6505243.svg)](https://doi.org/10.5281/zenodo.6505243)
 
 The reproduction scripts and results data for the paper "Error analysis for a parabolic PDE model problem on a coupled moving domain in a fully Eulerian framework" by H. v. Wahl and T. Richter.
 
